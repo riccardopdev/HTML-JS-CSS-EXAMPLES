@@ -1,0 +1,3 @@
+From YouTube tutorial https://www.youtube.com/watch?v=TlP5WIxVirU
+
+Simple code to build a search bar which allow user to input text and hide/show HTML elements that match the text entered.

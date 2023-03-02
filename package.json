@@ -1,0 +1,28 @@
+{
+  "name": "html-js-css-examples",
+  "version": "1.0.0",
+  "description": "A repository to test, learn, and experiment with HTML, JS and CSS coding",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riccardopdev/HTML-JS-CSS-EXAMPLES.git"
+  },
+  "keywords": [
+    "HTML",
+    "JS",
+    "JavaScript",
+    "CSS",
+    "study",
+    "learn",
+    "test"
+  ],
+  "author": "Riccardo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/riccardopdev/HTML-JS-CSS-EXAMPLES/issues"
+  },
+  "homepage": "https://github.com/riccardopdev/HTML-JS-CSS-EXAMPLES#readme"
+}

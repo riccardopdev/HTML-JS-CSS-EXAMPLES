@@ -1,0 +1,64 @@
+TailwindCSS
+https://tailwindcss.com/docs/installation
+
+Tailwind CSS uses predefined classes and a CLI that builds and compile the final CSS file by extracting the class names to be used from .html and .js file and inserting only the classes used in these files into an output .css file.
+
+Install Tailwind CSS
+Initialize an npm project with:
+
+npm init
+
+Install tailwindcss via npm, and create your tailwind.config.js file.
+
+npm install -D tailwindcss
+npx tailwindcss init
+
+Configure your template paths
+Add the paths to all of your template files in your tailwind.config.js file.
+For example if all the source files for .html and .js are in a src folder type the path below:
+
+tailwind.config.js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./src/**/*.{html,js}'],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+Add the Tailwind directives to your input CSS
+Add the @tailwind directives for each of Tailwind’s layers to your main input CSS file.
+
+./src/css/input.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+Start the Tailwind CLI build process
+Run the CLI tool to scan your .html and .js files for classes and build your output CSS.
+
+npx tailwindcss -i ./src/input.css -o ./src/output.css --watch
+
+Start using Tailwind in your HTML
+Add your compiled CSS file to the <head> and start using Tailwind’s utility classes to style your content.
+
+./src/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/output.css" rel="stylesheet">
+    <script src="./js/script.js" defer></script>
+    <title>Testing Tailwind CSS</title>
+</head>
+<body>
+    <section>
+        <h1 class="text-3xl font-bold underline">A header for this page</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint dolores numquam temporibus quisquam. Sapiente, minima? Cupiditate sit eos nobis quis explicabo beatae tempore. Omnis, rerum veniam minus fuga iure tenetur.</p>
+    </section>
+    <footer>Footer for this page</footer>
+</body>
+</html>

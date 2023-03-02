@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circle Test</title>
+
+  <style>
+    :root {      
+      --red1: #FFCDD2;
+      --red2: #EF9A9A;
+      --red3: #E57373;
+      --red4: #EF5356;
+      --red5: #F44336;
+      --red6: #E53935;
+      --red7: #D32F2F;
+      --red8: #C62828;
+      --red9: #B71C1C;
+      
+      --blue1: #D1C4E9;
+      --blue2: #B39DDB;
+      --blue3: #9575CD;
+      --blue4: #7E57C2;
+      --blue5: #673AB7;
+      --blue6: #5E35B1;
+      --blue7: #512DA8;
+      --blue8: #4527A0;
+      --blue9: #311B92;
+    }
+
+    .circle {
+      width: 100%;
+      /* width: 345px;
+      height: 345px; */
+      border-radius: 50%;
+      /* animation-name: switchColorRed;
+      animation-duration: 0.5s; */
+      animation-name: switchColorRed;
+      animation-duration: 0.5s;
+      animation-fill-mode: backwards;
+      /* animation-play-state: paused; */
+      background-image: radial-gradient(
+          closest-side,
+          var(--red1) 0%, var(--red1) 12%,
+          var(--red2) 12%, var(--red2) 23%,
+          var(--red3) 23%, var(--red3) 34%,
+          var(--red4) 34%, var(--red4) 45%,
+          var(--red5) 45%, var(--red5) 56%,
+          var(--red6) 56%, var(--red6) 67%,
+          var(--red7) 67%, var(--red7) 78%,
+          var(--red8) 78%, var(--red8) 89%,
+          var(--red9) 89%, var(--red9) 100%);
+    }
+
+    .circle:hover {
+      animation-name: switchColorBlue;
+      animation-duration: 0.5s;
+      animation-direction: normal;
+      animation-fill-mode: forwards;
+      animation-play-state: running;
+      /* animation-direction: alternate; */
+    }
+
+    .circle::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    @keyframes switchColorBlue {
+      0% {
+        background-image: radial-gradient(
+          closest-side,
+          var(--red1) 0%, var(--red1) 12%,
+          var(--red2) 12%, var(--red2) 23%,
+          var(--red3) 23%, var(--red3) 34%,
+          var(--red4) 34%, var(--red4) 45%,
+          var(--red5) 45%, var(--red5) 56%,
+          var(--red6) 56%, var(--red6) 67%,
+          var(--red7) 67%, var(--red7) 78%,
+          var(--red8) 78%, var(--red8) 89%,
+          var(--red9) 89%, var(--red9) 100%);
+      }
+      10% {
+        background-image: radial-gradient(
+          closest-side,
+          var(--blue1) 0%, var(--blue1) 12%,
+          var(--red2) 12%, var(--red2) 23%,
+          var(--red3) 23%, var(--red3) 34%,
+          var(--red4) 34%, var(--red4) 45%,
+          var(--red5) 45%, var(--red5) 56%,
+          var(--red6) 56%, var(--red6) 67%,
+          var(--red7) 67%, var(--red7) 78%,
+          var(--red8) 78%, var(--red8) 89%,
+          var(--red9) 89%, var(--red9) 100%);
+      }
+      20% {
+        background-image: radial-gradient(
+          closest-side,
+          var(--blue1) 0%, var(--blue1) 12%,
+          var(--blue2) 12%, var(--blue2) 23%,
+          var(--red3) 23%, var(--red3) 34%,
+          var(--red4) 34%, var(--red4) 45%,
+          var(--red5) 45%, var(--red5) 56%,
+          var(--red6) 56%, var(--red6) 67%,
+          var(--red7) 67%, var(--red7) 78%,
+          var(--red8) 78%, var(--red8) 89%,
+          var(--red9) 89%, var(--red9) 100%);
+      }
+      30% {
+        background-image: radial-gradient(
+          closest-side,
+          var(--blue1) 0%, var(--blue1) 12%,
+          var(--blue2) 12%, var(--blue2) 23%,
+          var(--blue3) 23%, var(--blue3) 34%,
+          var(--red4) 34%, var(--red4) 45%,
+          var(--red5) 45%, var(--red5) 56%,
+          var(--red6) 56%, var(--red6) 67%,
+          var(--red7) 67%, var(--red7) 78%,
+          var(--red8) 78%, var(--red8) 89%,
+          var(--red9) 89%, var(--red9) 100%);
+      }
+      40% {
+        background-image: radial-gradient(
+          closest-side,
+          var(--blue1) 0%, var(--blue1) 12%,
+          var(--blue2) 12%, var(--blue2) 23%,
+          var(--blue3) 23%, var(--blue3) 34%,
+          var(--blue4) 34%, var(--blue4) 45%,
+          var(--red5) 45%, var(--red5) 56%,
+          var(--red6) 56%, var(--red6) 67%,
+          var(--red7) 67%, var(--red7) 78%,
+          var(--red8) 78%, var(--red8) 89%,
+          var(--red9) 89%, var(--red9) 100%);
+      }
+      50% {
+        background-image: radial-gradient(
+          closest-side,
+          var(--blue1) 0%, var(--blue1) 12%,
+          var(--blue2) 12%, var(--blue2) 23%,
+          var(--blue3) 23%, var(--blue3) 34%,
+          var(--blue4) 34%, var(--blue4) 45%,
+          var(--blue5) 45%, var(--blue5) 56%,
+          var(--red6) 56%, var(--red6) 67%,
+          var(--red7) 67%, var(--red7) 78%,
+          var(--red8) 78%, var(--red8) 89%,
+          var(--red9) 89%, var(--red9) 100%);
+      }
+      60% {
+        background-image: radial-gradient(
+          closest-side,
+          var(--blue1) 0%, var(--blue1) 12%,
+          var(--blue2) 12%, var(--blue2) 23%,
+          var(--blue3) 23%, var(--blue3) 34%,
+          var(--blue4) 34%, var(--blue4) 45%,
+          var(--blue5) 45%, var(--blue5) 56%,
+          var(--blue6) 56%, var(--blue6) 67%,
+          var(--red7) 67%, var(--red7) 78%,
+          var(--red8) 78%, var(--red8) 89%,
+          var(--red9) 89%, var(--red9) 100%);
+      }
+      70% {
+        background-image: radial-gradient(
+          closest-side,
+          var(--blue1) 0%, var(--blue1) 12%,
+          var(--blue2) 12%, var(--blue2) 23%,
+          var(--blue3) 23%, var(--blue3) 34%,
+          var(--blue4) 34%, var(--blue4) 45%,
+          var(--blue5) 45%, var(--blue5) 56%,
+          var(--blue6) 56%, var(--blue6) 67%,
+          var(--blue7) 67%, var(--blue7) 78%,
+          var(--red8) 78%, var(--red8) 89%,
+          var(--red9) 89%, var(--red9) 100%);
+      }
+      80% {
+        background-image: radial-gradient(
+          closest-side,
+          var(--blue1) 0%, var(--blue1) 12%,
+          var(--blue2) 12%, var(--blue2) 23%,
+          var(--blue3) 23%, var(--blue3) 34%,
+          var(--blue4) 34%, var(--blue4) 45%,
+          var(--blue5) 45%, var(--blue5) 56%,
+          var(--blue6) 56%, var(--blue6) 67%,
+          var(--blue7) 67%, var(--blue7) 78%,
+          var(--blue8) 78%, var(--blue8) 89%,
+          var(--red9) 89%, var(--red9) 100%);
+      }
+      90% {
+        background-image: radial-gradient(
+          closest-side,
+          var(--blue1) 0%, var(--blue1) 12%,
+          var(--blue2) 12%, var(--blue2) 23%,
+          var(--blue3) 23%, var(--blue3) 34%,
+          var(--blue4) 34%, var(--blue4) 45%,
+          var(--blue5) 45%, var(--blue5) 56%,
+          var(--blue6) 56%, var(--blue6) 67%,
+          var(--blue7) 67%, var(--blue7) 78%,
+          var(--blue8) 78%, var(--blue8) 89%,
+          var(--blue9) 89%, var(--blue9) 100%);
+      }
+      100% {
+        background-image: radial-gradient(
+          closest-side,
+          var(--blue1) 0%, var(--blue1) 12%,
+          var(--blue2) 12%, var(--blue2) 23%,
+          var(--blue3) 23%, var(--blue3) 34%,
+          var(--blue4) 34%, var(--blue4) 45%,
+          var(--blue5) 45%, var(--blue5) 56%,
+          var(--blue6) 56%, var(--blue6) 67%,
+          var(--blue7) 67%, var(--blue7) 78%,
+          var(--blue8) 78%, var(--blue8) 89%,
+          var(--blue9) 89%, var(--blue9) 100%);
+      }
+    }
+
+    @keyframes switchColorRed {
+      10% {
+        background-image: radial-gradient(
+          closest-side,
+          var(--blue1) 0%, var(--blue1) 12%,
+          var(--blue2) 12%, var(--blue2) 23%,
+          var(--blue3) 23%, var(--blue3) 34%,
+          var(--blue4) 34%, var(--blue4) 45%,
+          var(--blue5) 45%, var(--blue5) 56%,
+          var(--blue6) 56%, var(--blue6) 67%,
+          var(--blue7) 67%, var(--blue7) 78%,
+          var(--blue8) 78%, var(--blue8) 89%,
+          var(--blue9) 89%, var(--blue9) 100%);
+      }
+      20% {
+        background-image: radial-gradient(
+          closest-side,
+          var(--blue1) 0%, var(--blue1) 12%,
+          var(--blue2) 12%, var(--blue2) 23%,
+          var(--blue3) 23%, var(--blue3) 34%,
+          var(--blue4) 34%, var(--blue4) 45%,
+          var(--blue5) 45%, var(--blue5) 56%,
+          var(--blue6) 56%, var(--blue6) 67%,
+          var(--blue7) 67%, var(--blue7) 78%,
+          var(--blue8) 78%, var(--blue8) 89%,
+          var(--red9) 89%, var(--red9) 100%);
+      }
+      30% {
+        background-image: radial-gradient(
+          closest-side,
+          var(--blue1) 0%, var(--blue1) 12%,
+          var(--blue2) 12%, var(--blue2) 23%,
+          var(--blue3) 23%, var(--blue3) 34%,
+          var(--blue4) 34%, var(--blue4) 45%,
+          var(--blue5) 45%, var(--blue5) 56%,
+          var(--blue6) 56%, var(--blue6) 67%,
+          var(--blue7) 67%, var(--blue7) 78%,
+          var(--red8) 78%, var(--red8) 89%,
+          var(--red9) 89%, var(--red9) 100%);
+      }
+      40% {
+        background-image: radial-gradient(
+          closest-side,
+          var(--blue1) 0%, var(--blue1) 12%,
+          var(--blue2) 12%, var(--blue2) 23%,
+          var(--blue3) 23%, var(--blue3) 34%,
+          var(--blue4) 34%, var(--blue4) 45%,
+          var(--blue5) 45%, var(--blue5) 56%,
+          var(--blue6) 56%, var(--blue6) 67%,
+          var(--red7) 67%, var(--red7) 78%,
+          var(--red8) 78%, var(--red8) 89%,
+          var(--red9) 89%, var(--red9) 100%);
+      }
+      50% {
+        background-image: radial-gradient(
+          closest-side,
+          var(--blue1) 0%, var(--blue1) 12%,
+          var(--blue2) 12%, var(--blue2) 23%,
+          var(--blue3) 23%, var(--blue3) 34%,
+          var(--blue4) 34%, var(--blue4) 45%,
+          var(--blue5) 45%, var(--blue5) 56%,
+          var(--red6) 56%, var(--red6) 67%,
+          var(--red7) 67%, var(--red7) 78%,
+          var(--red8) 78%, var(--red8) 89%,
+          var(--red9) 89%, var(--red9) 100%);
+      }
+      60% {
+        background-image: radial-gradient(
+          closest-side,
+          var(--blue1) 0%, var(--blue1) 12%,
+          var(--blue2) 12%, var(--blue2) 23%,
+          var(--blue3) 23%, var(--blue3) 34%,
+          var(--blue4) 34%, var(--blue4) 45%,
+          var(--red5) 45%, var(--red5) 56%,
+          var(--red6) 56%, var(--red6) 67%,
+          var(--red7) 67%, var(--red7) 78%,
+          var(--red8) 78%, var(--red8) 89%,
+          var(--red9) 89%, var(--red9) 100%);
+      }
+      70% {
+        background-image: radial-gradient(
+          closest-side,
+          var(--blue1) 0%, var(--blue1) 12%,
+          var(--blue2) 12%, var(--blue2) 23%,
+          var(--blue3) 23%, var(--blue3) 34%,
+          var(--red4) 34%, var(--red4) 45%,
+          var(--red5) 45%, var(--red5) 56%,
+          var(--red6) 56%, var(--red6) 67%,
+          var(--red7) 67%, var(--red7) 78%,
+          var(--red8) 78%, var(--red8) 89%,
+          var(--red9) 89%, var(--red9) 100%);
+      }
+      80% {
+        background-image: radial-gradient(
+          closest-side,
+          var(--blue1) 0%, var(--blue1) 12%,
+          var(--blue2) 12%, var(--blue2) 23%,
+          var(--red3) 23%, var(--red3) 34%,
+          var(--red4) 34%, var(--red4) 45%,
+          var(--red5) 45%, var(--red5) 56%,
+          var(--red6) 56%, var(--red6) 67%,
+          var(--red7) 67%, var(--red7) 78%,
+          var(--red8) 78%, var(--red8) 89%,
+          var(--red9) 89%, var(--red9) 100%);
+      }
+      90% {
+        background-image: radial-gradient(
+          closest-side,
+          var(--blue1) 0%, var(--blue1) 12%,
+          var(--red2) 12%, var(--red2) 23%,
+          var(--red3) 23%, var(--red3) 34%,
+          var(--red4) 34%, var(--red4) 45%,
+          var(--red5) 45%, var(--red5) 56%,
+          var(--red6) 56%, var(--red6) 67%,
+          var(--red7) 67%, var(--red7) 78%,
+          var(--red8) 78%, var(--red8) 89%,
+          var(--red9) 89%, var(--red9) 100%);
+      }
+      100% {
+        background-image: radial-gradient(
+          closest-side,
+          var(--red1) 0%, var(--red1) 12%,
+          var(--red2) 12%, var(--red2) 23%,
+          var(--red3) 23%, var(--red3) 34%,
+          var(--red4) 34%, var(--red4) 45%,
+          var(--red5) 45%, var(--red5) 56%,
+          var(--red6) 56%, var(--red6) 67%,
+          var(--red7) 67%, var(--red7) 78%,
+          var(--red8) 78%, var(--red8) 89%,
+          var(--red9) 89%, var(--red9) 100%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    Please recreate the effects shown in the video below.
+    You can only use CSS for this task. Don't alter the HTML or add
+    any Javascript to this file. 
+
+    Video: https://drive.google.com/file/d/1VudW2iNeqEsz534nuEEaFQPwjQSZuyBm/view?usp=sharing
+  -->
+
+  <!-- Don't touch the HTML -->
+  <div class="circle"></div>
+</body>
+</html>
