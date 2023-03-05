@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const myString = 'My name is Riccardo';
+
+    /* at() */
+    console.log('========= at() =========');
+    const newString_at1 = myString.at(3); // n
+    const newString_at2 = myString.at(-2); // d - Negative index start from the end of the string
+    const newString_at3 = myString.at(300); // undefined
+
+    console.log(newString_at1);
+    console.log(newString_at2);
+    console.log(newString_at3);
+
+    /* charAt() */
+    console.log('========= cartAt() =========');
+    const newString_charAt1 = myString.charAt(3); // n
+    const newString_charAt2 = myString.charAt(-2); // empty string - Negative index do not work
+    const newString_charAt3 = myString.charAt(myString.length - 1); // o
+
+    console.log(newString_charAt1);
+    console.log(newString_charAt2);
+    console.log(newString_charAt3);
+
+    /* charCodeAt() */
+    console.log('========= charCodeAt() =========');
+    const number_charCodeAt1 = myString.charCodeAt(3); // 110
+    const number_charCodeAt2 = myString.charCodeAt(-2); // NaN
+
+    console.log(number_charCodeAt1);
+    console.log(number_charCodeAt2);
+
+    /* concat() */
+    console.log('========= concat() =========');
+    const newString_concat1 = myString.concat('.', ' ', 'Hi there!'); // My name is Riccardo. Hi there!
+
+    console.log(newString_concat1);
+
+    /* endsWith() */
+    console.log('========= endsWith() =========');
+    const boolean_endsWith1 = myString.endsWith('ardo'); // true
+    const boolean_endsWith2 = myString.endsWith('ar', 17); // true
+
+    console.log(boolean_endsWith1);
+    console.log(boolean_endsWith2);
+
+    /* includes() */
+    console.log('========= includes() =========');
+    const boolean_includes1 = myString.includes('ardo'); // true
+    const boolean_includes2 = myString.includes('ar', 15); // true
+
+    console.log(boolean_includes1);
+    console.log(boolean_includes2);
+
+    /* indexOf() */
+    console.log('========= indexOf() =========');
+    const number_indexOf1 = myString.indexOf('a'); // 4
+    const number_indexOf2 = myString.indexOf('a', 5); // 15
+
+    console.log(number_indexOf1);
+    console.log(number_indexOf2);
+
+    /* lastIndexOf() */
+    console.log('========= lastIndexOf() =========');
+    const number_lastIndexOf1 = myString.lastIndexOf('a'); // 15
+    const number_lastIndexOf2 = myString.lastIndexOf('a', 4); // 4
+
+    console.log(number_lastIndexOf1);
+    console.log(number_lastIndexOf2);
+
+    /* match() */
+    console.log('========= match() =========');
+    const array_match1 = myString.match(/[A-Z]/g); // ['M', 'R']
+
+    console.log(array_match1);
+
+    /* padEnd() */
+    console.log('========= padEnd() =========');
+    const newString_padEnd = myString.padEnd(25, 'hi'); // My name is Riccardohihihi
+
+    console.log(newString_padEnd);
+
+    /* padStart() */
+    console.log('========= padStart() =========');
+    const newString_padStart = myString.padStart(25, 'hi'); // hihihiMy name is Riccardo
+
+    console.log(newString_padStart);
+
+    /* repeat() */
+    console.log('========= repeat() =========');
+    const newString_repeat1 = myString.repeat(2); // My name is RiccardoMy name is Riccardo
+
+    console.log(newString_repeat1);
+
+    /* replace() */
+    console.log('========= replace() =========');
+    const newString_replace1 = myString.replace('a', 'A'); // My nAme is Riccardo
+    const newString_replace2 = myString.replace(/a/g, 'A'); // My nAme is RiccArdo
+    const newString_replace3 = myString.replace(/a/g, () => 'A'); // My nAme is RiccArdo
+
+    console.log(newString_replace1);
+    console.log(newString_replace2);
+    console.log(newString_replace3);
+
+    /* replaceAll() */
+    console.log('========= replaceAll() =========');
+    const newString_replaceAll1 = myString.replaceAll('a', 'A'); // My nAme is RiccArdo
+    const newString_replaceAll2 = myString.replaceAll(/a/g, 'A'); // My nAme is RiccArdo
+    const newString_replaceAll3 = myString.replaceAll(/a/g, () => 'A'); // My nAme is RiccArdo
+
+    console.log(newString_replaceAll1);
+    console.log(newString_replaceAll2);
+    console.log(newString_replaceAll3);
+
+    /* search() */
+    console.log('========= search() =========');
+    const number_search1 = myString.search(/a/g); // 4
+    const number_search2 = myString.search('a'); // 4
+
+    console.log(number_search1);
+    console.log(number_search2);
+
+    /* slice() */
+    console.log('========= slice() =========');
+    const newString_slice1 = myString.slice(10); // Riccardo
+    const newString_slice2 = myString.slice(10, 14); // Ric
+    const newString_slice3 = myString.slice(-9); // Riccardo
+    const newString_slice4 = myString.slice(-9, -5); // Ric
+
+    console.log(newString_slice1);
+    console.log(newString_slice2);
+    console.log(newString_slice3);
+    console.log(newString_slice4);
+
+    /* split() */
+    console.log('========= split() =========');
+    const array_split1 = myString.split(' '); // ['My', 'name', 'is', 'Riccardo']
+    const array_split2 = myString.split(''); // ['M', 'y', ' ', 'n', 'a', 'm', 'e', ' ', 'i', 's', ' ', 'R', 'i', 'c', 'c', 'a', 'r', 'd', 'o']
+    const array_split3 = myString.split(); // ['My name is Riccardo']
+    const array_split4 = myString.split(/a/g); // ['My n', 'me is Ricc', 'rdo']
+    const array_split5 = myString.split(' ', 2); // ['My', 'name']
+
+    console.log(array_split1);
+    console.log(array_split2);
+    console.log(array_split3);
+    console.log(array_split4);
+    console.log(array_split5);
+
+    /* startsWith() */
+    console.log('========= startsWith() =========');
+    const boolean_startsWith1 = myString.startsWith('My'); // true
+    const boolean_startsWith2 = myString.startsWith('name', 3); // true
+
+    console.log(boolean_startsWith1);
+    console.log(boolean_startsWith2);
+
+    /* substring() */
+    console.log('========= substring() =========');
+    const newString_substring1 = myString.substring(10); // Riccardo
+    const newString_substring2 = myString.substring(10, 14); // Ric
+
+    console.log(newString_substring1);
+    console.log(newString_substring2);
+
+    /* toString() */
+    console.log('========= toString() =========');
+    const myNumber = 3;
+    const myObject = {val: 'Value'};
+    const myArray = [1, 2];
+    const myBoolean = true;
+    const newString_toString1 = myNumber.toString(); // 3
+    const newString_toString2 = myObject.toString(); // [object Object]
+    const newString_toString3 = myArray.toString(); // 1,2
+    const newString_toString4 = myBoolean.toString(); // true
+
+    console.log(newString_toString1);
+    console.log(newString_toString2);
+    console.log(newString_toString3);
+    console.log(newString_toString4);
+
+    /* trim() */
+    console.log('========= trim() =========');
+    const newString_trim1 = '   Hi   '.trim(); // Hi
+
+    console.log(newString_trim1);
+
+    /* trimEnd() */
+    console.log('========= trimEnd() =========');
+    const newString_trimEnd1 = 'Hi   '.trimEnd(); // Hi
+
+    console.log(newString_trimEnd1);
+
+    /* trimStart() */
+    console.log('========= trimStart() =========');
+    const newString_trimStart1 = '   Hi'.trimStart(); // Hi
+
+    console.log(newString_trimStart1);
+
+    /* valueOf() */
+    console.log('========= valueOf() =========');
+    const myStringObject = new String('Hello'); // Object: String {'Hello'}
+    const newString_valueOf1 = myStringObject.valueOf(); // string: Hello
+
+    console.log(myStringObject);
+    console.log(newString_valueOf1);
+    console.log(typeof myStringObject);
+    console.log(typeof newString_valueOf1);
+
+
+</script>
+</html>
