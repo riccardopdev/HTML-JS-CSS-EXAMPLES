@@ -1,3 +1,4 @@
+console.log('===================== PROMISE =====================');
 /*
 *
 * PROMISES DECLARED AS VARIABLES
@@ -119,3 +120,5 @@ async function askToWork() {
 }
 
 askToWork();
+
+console.log('=======================================================');
