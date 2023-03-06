@@ -20,16 +20,68 @@
         {name: 'Keyboard', price: 25}
     ];
 
-    const mySimpleArray = ['Cat', 'Dog', 'Turtle', 'Spider'];
+    const mySimpleArray1 = ['Cat', 'Dog', 'Turtle', 'Spider'];
+    const mySimpleArray2 = ['Fish', 'Lion', 'Monkey'];
 
+    /* at() */
+    console.log('========= at() =========');
+    const thirdItem_at = myArray.at(2); // {name: 'Album', price: 20}
+    const lastItem_at = myArray.at(-1); // {name: 'Keyboard', price: 25}
+
+    console.log(thirdItem_at);
+    console.log(lastItem_at);
+
+    /* concat() */
+    console.log('========= concat() =========');
+    const newArray_concat1 = mySimpleArray1.concat(mySimpleArray1); // ['Cat', 'Dog', 'Turtle', 'Spider', 'Cat', 'Dog', 'Turtle', 'Spider']
+    const newArray_concat2 = mySimpleArray1.concat(mySimpleArray2); // ['Cat', 'Dog', 'Turtle', 'Spider', 'Fish', 'Lion', 'Monkey']
+
+    console.log(newArray_concat1);
+    console.log(newArray_concat2);
+
+    /* copyWithin() */
+    console.log('========= copyWithin() =========');
+    const srcArray_copyWithin = ['a', 'b', 'c', 'd', 'e', 'f'];
+    srcArray_copyWithin.copyWithin(3, 1, 4); // ['a', 'b', 'c', 'b', 'c', 'd']
+    console.log(srcArray_copyWithin);
+
+    srcArray_copyWithin.copyWithin(3, 0); // ['a', 'b', 'c', 'a', 'b', 'c']
+    console.log(srcArray_copyWithin);
+    
+    srcArray_copyWithin.copyWithin(2); // ['a', 'b', 'a', 'b', 'c', 'a']
+    console.log(srcArray_copyWithin);
+
+    /* entries() */
+    console.log('========= entries() =========');
+    const iterator_entries = mySimpleArray1.entries();
+
+    console.log(iterator_entries.next().value); // [0, 'Cat']
+    console.log(iterator_entries.next().value); // [1, 'Dog']
+
+    /* every() */
+    console.log('========= every() =========');
     //Check if every item in the array satisfies the request
     const everyItemHasPrice = myArray.every((item) => {
         return item.price;
-    });
+    }); // true
 
     console.log('Every Item Has Price:');
     console.log(everyItemHasPrice);
 
+    /* fill() */
+    console.log('========= fill() =========');
+    const srcArray_fill = ['a', 'b', 'c', 'd', 'e', 'f'];
+    srcArray_fill.fill('z', 4, 5); // ['a', 'b', 'c', 'd', 'z', 'f']
+    console.log(srcArray_fill);
+
+    srcArray_fill.fill('y', 4); // ['a', 'b', 'c', 'd', 'y', 'y']
+    console.log(srcArray_fill);
+
+    srcArray_fill.fill('x'); // ['x', 'x', 'x', 'x', 'x', 'x']
+    console.log(srcArray_fill);
+
+    /* filter() */
+    console.log('========= filter() =========');
     //Create a shallow copy of the original array with only items that have a price less or equal to 100
     const filteredArray = myArray.filter((item) => {
         return item.price <= 100;
@@ -38,61 +90,259 @@
     console.log('Filtered Array:');
     console.log(filteredArray);
 
+    /* find() */
+    console.log('========= find() =========');
     //Return the first item that satisfy the request
     const foundItem = myArray.find((item) => {
         return item.name === 'Book';
-    });
+    }); // {name: 'Book', price: 5}
 
     console.log('Found Item:');
     console.log(foundItem);
 
+    /* findIndex() */
+    console.log('========= findIndex() =========');
     //Return the index of the first item that satisfy the request
     const foundItemIndex = myArray.findIndex((item) => {
         return item.price > 200;
     });
 
     console.log('Found Item Index:');
-    console.log(foundItemIndex);
+    console.log(foundItemIndex); // 4
 
+    /* findLast() */
+    console.log('========= findLast() =========');
+    //Return the last item that satisfy the request
+    const foundLast = myArray.findLast((item) => {
+        return item.price > 500;
+    }); // {name: 'Computer', price: 1000}
+
+    console.log('Found Last:');
+    console.log(foundLast);
+
+    /* findLastIndex() */
+    console.log('========= findLastIndex() =========');
+    //Return the last item index that satisfy the request
+    const foundLastIndex = myArray.findLastIndex((item) => {
+        return item.price > 500;
+    }); // 5
+
+    console.log('Found Last Index:');
+    console.log(foundLastIndex);
+
+    /* flat() */
+    console.log('========= flat() =========');
+    const srcArray_flat = [0, 1, 2, [3, 4, [5, 6]], 7, [8, 9]];
+    //Creates a new array with all sub-array elements concatenated
+    const newArray_flat1 = srcArray_flat.flat(); // [0, 1, 2, 3, 4, Array(2), 7, 8, 9]
+    const newArray_flat2 = srcArray_flat.flat(1); // [0, 1, 2, 3, 4, Array(2), 7, 8, 9]
+    const newArray_flat3 = srcArray_flat.flat(2); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    const newArray_flat4 = srcArray_flat.flat(0); // [0, 1, 2, Array(3), 7, Array(2)]
+
+    console.log(newArray_flat1);
+    console.log(newArray_flat2);
+    console.log(newArray_flat3);
+    console.log(newArray_flat4);
+
+    /* flatMap() */
+    console.log('========= flatMap() =========');
+    const srcArray_flatMap = [0, 1, 2, [3, 4, [5, 6]], 7, [8, 9]];
+    //It is identical to a map() followed by a flat() of depth 1
+    const newArray_flatMap1 = srcArray_flatMap.flatMap((item) => item); // [0, 1, 2, 3, 4, Array(2), 7, 8, 9]
+
+    console.log(newArray_flatMap1);
+
+    /* forEach() */
+    console.log('========= forEach() =========');
     //Console log the name of each item
     myArray.forEach((item) => {
         console.log(item.name);
     });
 
+    /* includes() */
+    console.log('========= includes() =========');
     //Check if the array includes a specific value
-    const includesValue = mySimpleArray.includes('Dog');
+    const includesValue = mySimpleArray1.includes('Dog'); // true
 
     console.log('Includes Value:');
     console.log(includesValue);
 
+    /* indexOf() */
+    console.log('========= indexOf() =========');
     //Return the index of the first item that matches the argument of indexOf
-    const foundItemIndex2 = mySimpleArray.indexOf('Turtle');
+    const foundItemIndex2 = mySimpleArray1.indexOf('Turtle'); // 2
 
     console.log('Found Item Index 2:');
     console.log(foundItemIndex2);
 
+    /* join() */
+    console.log('========= join() =========');
+    //Concatenate all of the elements from an array into a string and use a separator
+    const newString_join1 = mySimpleArray1.join(); // Cat,Dog,Turtle,Spider
+    const newString_join2 = mySimpleArray1.join(''); // CatDogTurtleSpider
+    const newString_join3 = mySimpleArray1.join('-'); // Cat-Dog-Turtle-Spider
+
+    console.log(newString_join1);
+    console.log(newString_join2);
+    console.log(newString_join3);
+
+    /* keys() */
+    console.log('========= keys() =========');
+    //Returns a new Array Iterator object that contains the keys for each index in the array
+    const newIterator_key1 = mySimpleArray1.keys();
+
+    for (const key of newIterator_key1) {
+        console.log(key);
+    } // 0 1 2 3 4
+
+    /* lastIndexOf() */
+    console.log('========= lastIndexOf() =========');
+    //Returns the last index at which a given element can be found in the array
+    const srcArray_lastIndexOf = ['a', 'b', 'a', 'd', 'a'];
+    const index_lastIndexOf1 = srcArray_lastIndexOf.lastIndexOf('a'); // 4
+    const index_lastIndexOf2 = srcArray_lastIndexOf.lastIndexOf('a', 3); // 2
+
+    console.log(index_lastIndexOf1);
+    console.log(index_lastIndexOf2);
+
+    /* map() */
+    console.log('========= map() =========');
     //Create a new array with only the name property of each item
     const mapArray = myArray.map((item) => {
         return item.name;
-    });
+    }); // ['Bike', 'TV', 'Album', 'Book', 'Phone', 'Computer', 'Keyboard']
 
     console.log('Map Array:');
     console.log(mapArray);
 
+    /* pop() */
+    console.log('========= pop() =========');
+    //Removes the last element from an array and returns it
+    const srcArray_pop = [1, 2, 3, 4, 5];
+    const lastItem_pop = srcArray_pop.pop(); // 5
+
+    console.log(lastItem_pop);
+
+    /* push() */
+    console.log('========= push() =========');
+    //Adds one or more elements to the end of an array and returns the new length
+    const srcArray_push = [1, 2, 3, 4, 5]; // [1, 2, 3, 4, 5, 0]
+    const arrayLenght_push = srcArray_push.push(0); // 6
+
+    console.log(arrayLenght_push);
+    console.log(srcArray_push);
+
+    /* reduce() */
+    console.log('========= reduce() =========');
+    //Traverse the array and sum the price of each element
+    const totalPrice = myArray.reduce((currentTotal, item) => {
+        return currentTotal + item.price;
+    }, 0); // 1850
+
+    console.log('Total Price:');
+    console.log(totalPrice);
+
+    /* reduceRight() */
+    console.log('========= reduceRight() =========');
+    //Applies a function against an accumulator and each value of the array (from right-to-left) to reduce it to a single value
+    const srcArray_reduceRight = ['o', 'd', 'r', 'a', 'c', 'c', 'i', 'R'];
+    const myName_reduceRight = srcArray_reduceRight.reduceRight((accumulator, currentValue) => {
+        return accumulator + currentValue;
+    }); // Riccardo
+
+    console.log(myName_reduceRight);
+
+    /* reverse() */
+    console.log('========= reverse() =========');
+    //Reverses an array in place and returns the reference to the same array
+    const srcArray_reverse = ['o', 'd', 'r', 'a', 'c', 'c', 'i', 'R'];
+    const arrayReference_reverse = srcArray_reverse.reverse(); // ['R', 'i', 'c', 'c', 'a', 'r', 'd', 'o']
+
+    console.log(arrayReference_reverse);
+    console.log(srcArray_reverse === arrayReference_reverse);
+
+    /* shift() */
+    console.log('========= shift() =========');
+    //Removes the first element from an array and returns it
+    const srcArray_shift = [1, 2, 3, 4, 5];
+    const firstItem_shift = srcArray_shift.shift(); // 1
+    
+    console.log(firstItem_shift);
+
+    /* slice() */
+    console.log('========= slice() =========');
+    //Returns a shallow copy of a portion of an array into a new array object selected from start to end
+    const srcArray_slice = [1, 2, 3, 4, 5];
+    const newArray_slice1 = srcArray_slice.slice(2, 4); // [3, 4]
+    const newArray_slice2 = srcArray_slice.slice(2); // [3, 4, 5]
+    const newArray_slice3 = srcArray_slice.slice(); // [1, 2, 3, 4, 5]
+
+    console.log(newArray_slice1);
+    console.log(newArray_slice2);
+    console.log(newArray_slice3);
+
+    /* some() */
+    console.log('========= some() =========');
     //Return true if at least one of the items satisfy the request
     const hasExpensiveItems = myArray.some((item) => {
         return item.price > 500;
-    });
+    }); // true
 
     console.log('Has Expensive Items:');
     console.log(hasExpensiveItems);
 
-    //Traverse the array and sum the price of each element
-    const totalPrice = myArray.reduce((currentTotal, item) => {
-        return currentTotal + item.price;
-    }, 0);
+    /* sort() */
+    console.log('========= sort() =========');
+    const srcArray_sort1 = ['c', 'd', 'a', 'e', 'b'];
+    const srcArray_sort2 = [4, 1, 10, 5, 100, 50];
+    const srcArray_sort3 = ['c', 'd', 'a', 'e', 'b'];
+    const srcArray_sort4 = [4, 1, 10, 5, 100, 50];
+    //Sorts the elements of an array in place and returns the reference to the same array
+    const arrayReference_sort1 = srcArray_sort1.sort(); // ['a', 'b', 'c', 'd', 'e']
+    const arrayReference_sort2 = srcArray_sort2.sort(); // [1, 10, 100, 4, 5, 50]
+    const arrayReference_sort3 = srcArray_sort3.sort((a, b) => {
+        return a > b ? -1 : 1;
+    }); // ['e', 'd', 'c', 'b', 'a']
+    const arrayReference_sort4 = srcArray_sort4.sort((a, b) => {
+        return a > b ? -1 : 1;
+    }); // [100, 50, 10, 5, 4, 1]
 
-    console.log('Total Price:');
-    console.log(totalPrice);
+    console.log(arrayReference_sort1);
+    console.log(arrayReference_sort2);
+    console.log(arrayReference_sort3);
+    console.log(arrayReference_sort4);
+
+    /* splice() */
+    console.log('========= splice() =========');
+    const srcArray_splice = ['a', 'c', 'd', 'r', 't', 'e'];
+    //Changes the contents of an array by removing or replacing existing elements and/or adding new elements in place. Return an array containing the deleted elements.
+    let arrayReference_splice1 = srcArray_splice.splice(3, 1);
+    console.log(srcArray_splice); // ['a', 'c', 'd', 't', 'e']
+    console.log(arrayReference_splice1); //[r]
+    arrayReference_splice1 = srcArray_splice.splice(3, 2);
+    console.log(srcArray_splice); // ['a', 'c', 'd']
+    console.log(arrayReference_splice1); //['t', 'e']
+    arrayReference_splice1 = srcArray_splice.splice(3, 0, 'e', 'f', 'g');
+    console.log(srcArray_splice); // ['a', 'c', 'd', 'f', 'g']
+    console.log(arrayReference_splice1); //[]
+
+    /* unshift() */
+    console.log('========= unshift() =========');
+    const srcArray_unshift = [3, 4, 5]; // [1, 2, 3, 4, 5]
+    //Adds one or more elements to the beginning of an array and returns the new length
+    const arrayLenght_unshift = srcArray_unshift.unshift(1, 2); // 5
+
+    console.log(srcArray_unshift);
+    console.log(arrayLenght_unshift);
+
+    /* values() */
+    console.log('========= values() =========');
+    const srcArray_values = ['a', 'b', 'c'];
+    //Returns a new array iterator object that iterates the value of each item
+    const iterator_values = srcArray_values.values();
+
+    console.log(iterator_values.next().value); // a
+    console.log(iterator_values.next().value); // b
+
 </script>
 </html>
