@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+</head>
+<body>
+    <h2>Check console output</h2>
+</body>
+<script>
+    /* assign() */
+    console.log('========= assign() =========');
+    //Copies all enumerable own properties from one or more source objects to a target object
+    const srcObject_assign1 = {a: 1, b: 2};
+    const srcObject_assign2 = {c: 3, d: 4};
+    const targetObject_assign1 = {};
+    const targetObject_assign2 = {};
+
+    Object.assign(targetObject_assign1, srcObject_assign1); // {a: 1, b: 2}
+    Object.assign(targetObject_assign2, srcObject_assign1, srcObject_assign2); // {a: 1, b: 2, c: 3, d: 4}
+
+    console.log(targetObject_assign1);
+    console.log(targetObject_assign2);
+
+    /* create() */
+    console.log('========= create() =========');
+    //Creates a new object, using an existing object as the prototype
+    const srcObject_create1 = {name: 'Ric', age: 50};
+    const newObject_create1 = Object.create(srcObject_create1); // {} - name and age are on the object prototype
+    newObject_create1.age = 48; // {age: 48} - also age: 50 on the prototype
+    newObject_create1.job = 'Developer'; // {age: 48, job: 'Developer'}
+
+    console.log(newObject_create1);
+    console.log(newObject_create1.hasOwnProperty(name)); // false
+
+    /* defineProperties() */
+    console.log('========= defineProperties() =========');
+    //Defines new or modifies existing properties directly on an object
+    const object_defineProperties = {a: 1, b: 2};
+    Object.defineProperties(object_defineProperties, {
+        c: { 
+            value: 3,
+            writable: true 
+            },
+        d: {
+            value: 4,
+            configurable: true
+        }
+        });
+
+    console.log(object_defineProperties); // {a: 1, b: 2, c: 3, d: 4}
+    object_defineProperties.c = 5;
+    object_defineProperties.d = 6; // Throws error with 'use strict'
+    console.log(object_defineProperties); // {a: 1, b: 2, c: 5, d: 4}
+
+    /* defineProperty() */
+    console.log('========= defineProperty() =========');
+    //Defines a new property directly on an object
+    const object_defineProperty = {a: 1, b: 2};
+    Object.defineProperty(object_defineProperty, 'c', {
+        value: 6,
+        configurable: true
+    });
+
+    console.log(object_defineProperty); // {a: 1, b: 2, c: 6}
+    object_defineProperty.c = 9; // Throws error with 'use strict'
+    console.log(object_defineProperty); // {a: 1, b: 2, c: 6}
+
+    /* entries() */
+    console.log('========= entries() =========');
+    //Returns an array of a given object's own enumerable string-keyed property key-value pairs
+    const object_entries = {a: 1, b: 'c', c: ['M', 'N'], d: {x: 3, y: 4}};
+    const array_entries = Object.entries(object_entries);
+
+    console.log(array_entries); // [['a', 1], ['b', 'c'], ['c', ['c', ['M', 'N']]], ['d', {x: 3, y: 4}]]
+
+    /* freeze() */
+    console.log('========= freeze() =========');
+    //Freezes an object
+    const object_freeze = {a: 1, b: 2};
+    Object.freeze(object_freeze);
+
+    object_freeze.a = 3; // Throws error with 'use strict'
+    console.log(object_freeze); // {a: 1, b: 2}
+
+    /* fromEntries() */
+    console.log('========= fromEntries() =========');
+    //Transforms a list of key-value pairs into an object
+    const array_fromEntries = [['a', 1], ['b', 2]];
+    const object_fromEntries = Object.fromEntries(array_fromEntries); // {a: 1, b: 2}
+
+    console.log(object_fromEntries);
+
+    /* getOwnPropertyDescriptor() */
+    console.log('========= getOwnPropertyDescriptor() =========');
+    //Returns an object describing the configuration of a specific property on a given object
+    const obj_getOwnPropertyDescriptor = {a: 1, b: 2};
+    const objDescriptor_getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor(obj_getOwnPropertyDescriptor, 'a'); // {value: 1, writable: true, enumerable: true, configurable: true}
+
+    console.log(objDescriptor_getOwnPropertyDescriptor);
+
+    /* getOwnPropertyDescriptors() */
+    console.log('========= getOwnPropertyDescriptors() =========');
+    //Returns an object describing the configuration of a specific property on a given object
+    const obj_getOwnPropertyDescriptors = {a: 1, b: 2};
+    const objDescriptor_getOwnPropertyDescriptors = Object.getOwnPropertyDescriptors(obj_getOwnPropertyDescriptors);
+    /* {{value: 1, writable: true, enumerable: true, configurable: true},
+    {value: 2, writable: true, enumerable: true, configurable: true}} */
+
+    console.log(objDescriptor_getOwnPropertyDescriptors);
+
+    /* getOwnPropertyNames() */
+    console.log('========= getOwnPropertyNames() =========');
+    //Returns an array of all properties
+    const obj_getOwnPropertyNames = {a: 1, b: 2};
+    const array_getOwnPropertyNames = Object.getOwnPropertyNames(obj_getOwnPropertyNames); // ['a', 'b']
+
+    console.log(array_getOwnPropertyNames);
+
+    /* getOwnPropertySymbols() */
+    console.log('========= getOwnPropertySymbols() =========');
+    //Returns an array of all symbol properties
+    const a = Symbol('a');
+    const b = Symbol('b');
+    const obj_getOwnPropertySymbols = {c: 'c'};
+    obj_getOwnPropertySymbols[a] = 'a';
+    obj_getOwnPropertySymbols[b] = 'b';
+    const array_getOwnPropertySymbols = Object.getOwnPropertySymbols(obj_getOwnPropertySymbols); // [Symbol(a), Symbol(b)]
+
+    console.log(array_getOwnPropertySymbols);
+
+    /* hasOwn() */
+    console.log('========= hasOwn() =========');
+    //Returns true if the specified object has the indicated property
+    const objPrototype_hasOwn = {a: 1};
+    const obj_hasOwn = Object.create(objPrototype_hasOwn);
+    obj_hasOwn.b = '2';
+
+    console.log(Object.hasOwn(obj_hasOwn, 'a')); // false
+    console.log(Object.hasOwn(obj_hasOwn, 'b')); // true
+
+    /* hasOwnProperty() */
+    console.log('========= hasOwnProperty() =========');
+    //Returns a boolean indicating whether the object has the specified property
+    const objPrototype_hasOwnProperty = {a: 1};
+    const obj_hasOwnProperty = Object.create(objPrototype_hasOwnProperty);
+    obj_hasOwnProperty.b = '2';
+
+    console.log(obj_hasOwnProperty.hasOwnProperty('a')); // false
+    console.log(obj_hasOwnProperty.hasOwnProperty('b')); // true
+
+    /* is() */
+    console.log('========= is() =========');
+    //Determines whether two values are the same value
+    const obj_is1 = {a: 1, b: 2};
+    const obj_is2 = obj_is1;
+
+    console.log(Object.is(obj_is1, {a: 1, b: 2})); // false
+    console.log(Object.is(obj_is1, obj_is2)); // true
+
+    /* isFrozen() */
+    console.log('========= isFrozen() =========');
+    //Determines if an object is frozen
+    const obj_isFrozen = {a: 1};
+
+    console.log(Object.isFrozen(obj_isFrozen)); // false
+    Object.freeze(obj_isFrozen);
+    console.log(Object.isFrozen(obj_isFrozen)); // true
+
+    /* isSealed() */
+    console.log('========= isSealed() =========');
+    //Determines if an object is sealed
+    const obj_isSealed = {a: 1};
+
+    console.log(Object.isSealed(obj_isSealed)); // false
+    Object.seal(obj_isSealed);
+    console.log(Object.isSealed(obj_isSealed)); // true
+
+    /* keys() */
+    console.log('========= keys() =========');
+    const obj_keys = {a: 1, b: 2};
+    const array_keys = Object.keys(obj_keys); // ['a', 'b']
+
+    console.log(array_keys);
+
+    /* seal() */
+    console.log('========= seal() =========');
+    //Seals an object
+    const obj_seal = {a: 1, b: 2};
+    Object.seal(obj_seal);
+
+    obj_seal.c = 3; // Throws an error with 'use strict'
+    obj_seal.a = 2;
+    console.log(obj_seal); // {a: 2, b: 2}
+
+    /* values() */
+    console.log('========= values() =========');
+    //Returns an array of a given object's own enumerable string-keyed property values
+    const obj_values = {a: 1, b: 'Hi', c: false, d: ['a', 'b']};
+    const array_values = Object.values(obj_values); // [1, 'Hi', false, ['a', 'b']]
+
+    console.log(array_values);
+
+</script>
+</html>
