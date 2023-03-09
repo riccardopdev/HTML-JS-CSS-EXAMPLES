@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm</title>
+</head>
+<body>
+    <h2>Check console output</h2>
+</body>
+<script>
+    console.log('========= MATH ALGORITHMS =========\n\n');
+    /* Fibonacci */
+    console.log('========= Fibonacci =========');
+    console.log('The Fibonacci sequence is a series of numbers in which each number is the sum of the two that precede it. Starting at 0 and 1, the first 10 numbers of the sequence look like this: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, and so on.');
+    console.log('Below implementation uses 1 x for loop to return an array of n values from Fibonacci: O(n).\n\n');
+    
+    function fibonacci(n) {
+        const fib = [0, 1]; // The first two numbers are always 0 and 1
+
+        for(let i = 2; i < n; i++) {
+            fib[i] = fib[i - 1] + fib[i - 2];
+        }
+
+        return fib;
+    }
+
+    console.log('2: ', fibonacci(2)); // [0, 1]
+    console.log('3: ', fibonacci(3)); // [0, 1, 1]
+    console.log('4: ', fibonacci(4)); // [0, 1, 1, 2]
+    console.log('5: ', fibonacci(5)); // [0, 1, 1, 2, 3]
+    console.log('6: ', fibonacci(6)); // [0, 1, 1, 2, 3, 5]
+    console.log('\n\n');
+
+
+    console.log('Below implementation return the n number result from Fibonacci using a recursive function. This is an inefficent algorithm with O(2 ̂  n).\n\n');
+    function recursiveFibonacci(n) {
+        if(n < 2) return n; //Return 0 if n=0, and 1 if n=1
+        return recursiveFibonacci(n - 1) + recursiveFibonacci(n - 2);
+        
+    }
+
+    console.log('0: ', recursiveFibonacci(0)); // 0
+    console.log('1: ', recursiveFibonacci(1)); // 1
+    console.log('2: ', recursiveFibonacci(2)); // 1
+    console.log('3: ', recursiveFibonacci(3)); // 2
+    console.log('6: ', recursiveFibonacci(6)); // 8
+    console.log('\n\n');
+
+    /* Factorial */
+    console.log('========= Factorial =========');
+    console.log('A factorial is a function in mathematics with the symbol (!) that multiplies a number (n) by every number that precedes it.');
+    console.log('Below implementation uses 1 x for loop: O(n).\n\n');
+    
+    function factorial(n) {
+        let fact = 1;
+
+        for(let i = 2; i <= n; i++) {
+            fact = fact * i; 
+        }
+
+        return fact;
+    }
+
+    console.log('!0: ', factorial(0)); // 1
+    console.log('!1: ', factorial(1)); // 1
+    console.log('!5: ', factorial(5)); // 120
+    console.log('\n\n');
+
+    console.log('Below is an implementation of the Factorial function using recursive functions. In this scenario for a n number we call the function n times: O(n).\n\n');
+
+    function recursiveFactorial(n) {
+        if(n === 0) return 1;
+        return n * recursiveFactorial(n - 1);
+    }
+
+    console.log('!0: ', recursiveFactorial(0)); // 1
+    console.log('!1: ', recursiveFactorial(1)); // 1
+    console.log('!2: ', recursiveFactorial(2)); // 2
+    console.log('!3: ', recursiveFactorial(3)); // 6
+    console.log('!5: ', recursiveFactorial(5)); // 120
+    console.log('\n\n');
+
+    /* Prime Numbers */
+    console.log('========= Prime Numbers =========');
+    console.log('A prime number is a positive integer greater than 1 that has exactly two factors, 1 and the number itself.');
+    console.log('Below implementation uses 1 x for loop: O(n).\n\n');
+
+    function isPrime(n) {
+        if(n < 2) {
+            return false;
+        }
+
+        if(n === 2) {
+            return true;
+        }
+
+        for(let i = 2; i < n; i++) {
+            if(n % i === 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    console.log('1: ', isPrime(1)); // false
+    console.log('2: ', isPrime(2)); // true
+    console.log('3: ', isPrime(3)); // true
+    console.log('4: ', isPrime(4)); // false
+    console.log('5: ', isPrime(5)); // true
+    console.log('6: ', isPrime(6)); // false
+    console.log('7: ', isPrime(7)); // true
+    console.log('8: ', isPrime(8)); // false
+    console.log('9: ', isPrime(9)); // false
+    console.log('10: ', isPrime(10)); // false
+    console.log('11: ', isPrime(11)); // true
+    console.log('\n\n');
+
+    console.log('Integers larger than the square root do not need to be checked because, whenever "n = a*b", one of the two factors "a" and "b" is less than or equal to the square root of "n"');
+    console.log('Below implementation uses 1 x for loop but only checks square root of n times: O(sqrt(n)).\n\n');
+
+    function isPrimeOptimized(n) {
+        if(n < 2) {
+            return false;
+        }
+
+        if(n === 2) {
+            return true;
+        }
+
+        for(let i = 2; i <= Math.sqrt(n); i++) {
+            if(n % i === 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    console.log('1: ', isPrimeOptimized(1)); // false
+    console.log('2: ', isPrimeOptimized(2)); // true
+    console.log('3: ', isPrimeOptimized(3)); // true
+    console.log('4: ', isPrimeOptimized(4)); // false
+    console.log('5: ', isPrimeOptimized(5)); // true
+    console.log('6: ', isPrimeOptimized(6)); // false
+    console.log('7: ', isPrimeOptimized(7)); // true
+    console.log('8: ', isPrimeOptimized(8)); // false
+    console.log('9: ', isPrimeOptimized(9)); // false
+    console.log('10: ', isPrimeOptimized(10)); // false
+    console.log('11: ', isPrimeOptimized(11)); // true
+    console.log('\n\n');
+
+    /* Power of two */
+    console.log('========= Power of two =========');
+    console.log('An integer is power of two it there exist an integer "x" such that n = 2 ̂  x.\n\n');
+    console.log('Below implementation uses 1 x for loop which reduces the data by half at each iteration: O(log n).\n\n');
+
+    function isPowerOfTwo(n) {
+        if(n === 1 || n === 2) return true;
+
+        while (n > 2) {
+            n = n / 2;
+            if(n === 2) return true;
+        }
+
+        return false;
+    }
+
+    console.log('0: ', isPowerOfTwo(0)); // false
+    console.log('1: ', isPowerOfTwo(1)); // true
+    console.log('2: ', isPowerOfTwo(2)); // true
+    console.log('4: ', isPowerOfTwo(4)); // true
+    console.log('5: ', isPowerOfTwo(5)); // false
+    console.log('6: ', isPowerOfTwo(6)); // false
+    console.log('8: ', isPowerOfTwo(8)); // true
+    console.log('\n\n');
+
+    console.log('Below is an implementation with a different while loop and condition test, it still reduces the data by half at each iteration: O(log n).\n\n');
+
+    function isPowerOfTwo2(n) {
+        if(n < 1) return false;
+
+        while (n > 1) {
+            if(n % 2 !== 0) return false;
+            n = n / 2;
+        }
+
+        return true;
+    }
+
+    console.log('0: ', isPowerOfTwo2(0)); // false
+    console.log('1: ', isPowerOfTwo2(1)); // true
+    console.log('2: ', isPowerOfTwo2(2)); // true
+    console.log('4: ', isPowerOfTwo2(4)); // true
+    console.log('5: ', isPowerOfTwo2(5)); // false
+    console.log('6: ', isPowerOfTwo2(6)); // false
+    console.log('8: ', isPowerOfTwo2(8)); // true
+    console.log('\n\n');
+
+    console.log('Below is an implementation using the & BitWise operation, with one single operation, and independent of data: O(1).\n\n');
+
+    function isPowerOfTwoBitWise(n) {
+        if(n < 1) return false;
+
+        return (n & (n - 1)) === 0;
+    }
+
+    console.log('0: ', isPowerOfTwoBitWise(0)); // false
+    console.log('1: ', isPowerOfTwoBitWise(1)); // true
+    console.log('2: ', isPowerOfTwoBitWise(2)); // true
+    console.log('4: ', isPowerOfTwoBitWise(4)); // true
+    console.log('5: ', isPowerOfTwoBitWise(5)); // false
+    console.log('6: ', isPowerOfTwoBitWise(6)); // false
+    console.log('8: ', isPowerOfTwoBitWise(8)); // true
+    console.log('\n\n');
+
+    /* sum of n number */
+    console.log('========= Sum of n number =========');
+
+    console.log('Sum with for loop: O(n).\n\n');
+    function sum1(n) {
+        let sum = 0;
+        for(let i = 1; i <= n; i++) {
+            sum += i;
+        }
+        return sum;
+    }
+
+    console.log(sum1(4));
+    console.log('\n\n');
+
+    console.log('Sum with one single formula: O(1).\n\n');
+    function sum2(n) {
+        return (n * (n + 1)) / 2;
+    }
+
+    console.log(sum2(4));
+    console.log('\n\n');
+
+    console.log('========= SEARCH ALGORITHMS =========\n\n');
+    /* Linear Search */
+    console.log('========= Linear Search =========');
+    console.log('Below linear search uses a for loop to search every element of an array: O(n).\n\n');
+
+    function linearSearch(arr, target) {
+        for (let i = 0; i < arr.length; i++) {
+            if(arr[i] === target) {    
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    console.log(linearSearch([1, 4, 5, 7], 1)); // 0
+    console.log(linearSearch([1, 4, 5, 7], 5)); // 2
+    console.log(linearSearch([1, 4, 5, 7], 6)); // -1
+    console.log('\n\n');
+
+    /* Binary Search */
+    console.log('========= Binary Search =========');
+    console.log('Below binary search works on "sorted" data. At each iteration the data to be searched is halved: O(log n).\n\n');
+
+    function binarySearch(arr, target) {
+        let leftIndex = 0;
+        let rightIndex = arr.length - 1;
+
+        while (leftIndex <= rightIndex) {
+            let middleIndex = Math.floor((leftIndex + rightIndex)/2); //Middle between left and right index
+
+            //Check if we found our target
+            if(target === arr[middleIndex]) {
+                return middleIndex;
+            }
+
+            //Adjust right or left index
+            if(target < arr[middleIndex]) {
+                rightIndex = middleIndex - 1;
+            } else {
+                leftIndex = middleIndex + 1;
+            }
+        }
+
+        //Not found
+        return -1;
+    }
+
+    console.log(binarySearch([1, 4, 5, 7, 9, 13], 1)); // 0
+    console.log(binarySearch([1, 4, 5, 7, 9, 13], 5)); // 2
+    console.log(binarySearch([1, 4, 5, 7, 9, 13], 9)); // 4
+    console.log(binarySearch([1, 4, 5, 7, 9, 13], 2)); // -1
+    console.log('\n\n');
+
+    console.log('Below binary search works on "sorted" data and uses a recursive function. At each iteration the data to be searched is halved: O(log n).\n\n');
+
+    function recursiveBinarySearch(arr, target) {
+        let leftIndex = 0;
+        let rightIndex = arr.length - 1;
+        return search(arr, target, leftIndex, rightIndex);
+    }
+
+    function search(arr, target, leftIndex, rightIndex) {
+        if(leftIndex > rightIndex) return -1;
+        let middleIndex = Math.floor((leftIndex + rightIndex)/2);
+        if(target === arr[middleIndex]) return middleIndex;
+
+        if(target < arr[middleIndex]) {
+            return search(arr, target, leftIndex, middleIndex - 1);
+        } else {
+            return search(arr, target, middleIndex + 1, rightIndex);
+        }
+    }
+
+    console.log(recursiveBinarySearch([1, 4, 5, 7, 9, 13], 1)); // 0
+    console.log(recursiveBinarySearch([1, 4, 5, 7, 9, 13], 5)); // 2
+    console.log(recursiveBinarySearch([1, 4, 5, 7, 9, 13], 9)); // 4
+    console.log(recursiveBinarySearch([1, 4, 5, 7, 9, 13], 2)); // -1
+    console.log('\n\n');
+
+    console.log('========= SORTING ALGORITHMS =========\n\n');
+    /* Bubble Sort */
+    console.log('========= Bubble Sort =========');
+    console.log('The below bubble sort algorithm uses two nested loops. Its time complexity grows quadratically with the growth of the data: O(n ̂  2).\n\n');
+
+    function bubbleSort(arr) {
+        let swapped = false;
+
+        do {
+            swapped = false; // Reset swapped
+
+            for (let i = 0; i < arr.length - 1; i++) {
+             if(arr[i] > arr[i + 1]) {
+                    //Swap items
+                    let temp = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
+                    swapped = true; // We had at least one swapped element
+                }
+            }
+        } while (swapped);
+    }
+
+    const arrBubble = [5, -2, 6, 1, -5, 9];
+    bubbleSort(arrBubble);
+    console.log('Sorted array with Bubble: ', arrBubble);
+    console.log('\n\n');
+
+    /* Insertion Sort */
+    console.log('========= Insertion Sort =========');
+    console.log('The below insertion sort algorithm uses two nested loops. Its time complexity grows quadratically with the growth of the data: O(n ̂  2).\n\n');
+
+    function insertionSort(arr) {
+
+        //With Insertion Sort we assume the first item is already sorted. The loop start from 1
+        for (let i = 1; i < arr.length; i++) {
+
+            let numberToInsert = arr[i]; // Get the first item of the unsorted part
+            let j = i - 1; // Index of the first item in the sorted part
+
+            //Use a second loop to compare the first item of the unsorted part to all items of the sorted part
+            while (j >= 0 && arr[j] > numberToInsert) {
+                //One of the items in the sorted part is bigger than the first item from the unsorted part. Shift this item to the right, which will cause it to replace the item in the unsorted part. However we keep track of the original item as it is stored in numberToInsert
+                arr[j + 1] = arr[j];
+
+                //Move down one place to check the previous item from the sorted part
+                j = j - 1;
+            }
+
+            //Once the above while loop condition has failed it means that arr[j] is not bigger than numberToInsert. So we can place numberToInsert to the right of arr[j]
+            arr[j + 1] = numberToInsert;
+        }
+    }
+
+    const arrInsertion = [5, -2, 6, 1, -5, 9];
+    insertionSort(arrInsertion);
+    console.log('Sorted array with Insertion: ', arrInsertion);
+    console.log('\n\n');
+
+    /* Quick Sort */
+    console.log('========= Quick Sort =========');
+    console.log('For the Quick Sort alorithm we use one for loop and recursive function. In the worse case complexity we could apply this algorithm to an array that is already sorted, which would cause us to partition the array in an empty array and a full array. In this case the complexity will grow quadratically with data: O(n ̂  2).\n However, the average case complexity of the Quick Sort alorithm is O(n log n), this is because we recursively divide the array in smaller arrays (log n), and we also have one for loop (n). \n\n');
+
+    function quickSort(arr) {
+        if(arr.length < 2) return arr; //Base case for recursive function
+
+        const pivot = arr[arr.length - 1]; //We pick the last element as our pivot
+        const leftArray = [];
+        const rightArray = [];
+
+        //We loop throught the array, except the last item which is our pivot
+        //Compare the pivot to each element and push these in the corresponding array
+        for (let i = 0; i < arr.length - 1; i++) {
+            if(pivot > arr[i]) {
+                leftArray.push(arr[i]);
+            } else {
+                rightArray.push(arr[i]);
+            }
+        }
+
+        //We recursively call the quickSort function on leftArray and rightArray
+        return [...quickSort(leftArray), pivot, ...quickSort(rightArray)];
+    }
+
+    const arrSort = [5, -2, 9, 1, -5, 6];
+    console.log('Sorted array with Quick: ', quickSort(arrSort));
+    console.log('\n\n');
+
+    /* Merge Sort */
+    console.log('========= Merge Sort =========');
+    console.log('For the Merge Sort algorithm, in the first function "mergeSort" we recursively divide the data into half (log n), then in the second function "merge" we use one while loop to merge the arrays (n). The resulting time complexity is: O(n log n). \n\n');
+
+    function mergeSort(arr) {
+        //While arr.lenght > 1 divide array in the middle using this recursive function
+        if(arr.length < 2) return arr; //Base condition for recursive function
+
+        const mid = Math.floor(arr.length/2);
+        const leftArray = arr.slice(0, mid);
+        const rightArray = arr.slice(mid);
+        
+        return merge(mergeSort(leftArray), mergeSort(rightArray));
+    }
+
+    function merge(leftArray, rightArray) {
+        //Take two arrays compare one element of each and push the smaller element to a new array
+        const sortedArray = [];
+
+        //A loope running as long as both array length is > 0
+        while(leftArray.length && rightArray.length) {
+            if(leftArray[0] <= rightArray[0]) {
+                //Push the element in the sorted array and remove it from the left array
+                sortedArray.push(leftArray.shift()); 
+            } else {
+                //Push the element in the sorted array and remove it from the right array
+                sortedArray.push(rightArray.shift());
+            }
+        }
+
+        //Now we merged the sortedArray with whatevever arrays still has elements
+        return [...sortedArray, ...leftArray, ...rightArray];
+    }
+
+    const arrMerge = [5, -2, 9, 1, -5, 6];
+    console.log('Sorted array with Merge: ', mergeSort(arrMerge));
+    console.log('\n\n');
+</script>
+</html>
