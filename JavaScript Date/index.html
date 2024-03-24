@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date</title>
+</head>
+<body>
+    <h2>Check console output</h2>
+</body>
+<script>
+    const today = new Date();
+
+    const format = Intl.DateTimeFormat('en-au', {
+        dateStyle: 'full',
+        timeStyle: 'full'
+    });
+
+    console.log(format.format(today)); // Thursday, 9 March 2023 at 12:13:35 pm Australian Eastern Daylight Time
+</script>
+</html>
