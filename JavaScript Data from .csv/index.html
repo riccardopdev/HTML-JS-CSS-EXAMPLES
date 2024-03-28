@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Data to List</title>
+</head>
+
+<body>
+  <ul id="dataList"></ul>
+
+  <script>
+    // Fetch the CSV file
+    fetch('data.csv')
+      .then(response => response.text()) // Convert response to text
+      .then(data => {
+        // Parse CSV data
+        const dataArray = parseCSV(data);
+
+        // Display data in <li> elements
+        displayData(dataArray);
+      })
+      .catch(error => console.error('Error fetching CSV:', error));
+
+    function parseCSV(csv) {
+      // Split CSV into rows
+      console.log(csv)
+      const rows = csv.split('\n');
+      console.log(rows)
+
+      // Parse each row into an array of values
+      const dataArray = rows.map(row => row.split(','));
+
+      console.log(dataArray)
+      return dataArray;
+    }
+
+    function displayData(dataArray) {
+      const dataList = document.getElementById('dataList');
+      dataArray.forEach(row => {
+        const listItem = document.createElement('li');
+        listItem.textContent = row.join(' | '); // Join array elements with a separator
+        dataList.appendChild(listItem);
+      });
+    }
+  </script>
+</body>
+
+</html>

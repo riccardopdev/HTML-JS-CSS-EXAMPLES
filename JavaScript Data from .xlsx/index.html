@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excel Data to List</title>
+</head>
+
+<body>
+  <h2>Data from .xlsx file using SheetJS library: https://sheetjs.com/</h2>
+  <ul id="dataList"></ul>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
+  <script>
+    // Function to fetch and display data
+    async function fetchDataFromExcel() {
+      try {
+        // Fetch the Excel file
+        const response = await fetch('data.xlsx');
+        const arrayBuffer = await response.arrayBuffer();
+
+        console.log(arrayBuffer)
+
+        // Parse the Excel file
+        const workbook = XLSX.read(arrayBuffer, { type: 'array' });
+        const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+        const data = XLSX.utils.sheet_to_json(worksheet);
+
+        console.log(data)
+
+        // Display the data in <li> elements
+        const dataList = document.getElementById('dataList');
+        data.forEach(item => {
+          const listItem = document.createElement('li');
+          listItem.textContent = item['dataColumn']; // Replace 'dataColumn' with the column name from your Excel sheet
+          dataList.appendChild(listItem);
+        });
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    // Call the function to fetch and display data
+    fetchDataFromExcel();
+  </script>
+</body>
+
+</html>
